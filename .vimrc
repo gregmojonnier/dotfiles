@@ -12,7 +12,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'elzr/vim-json'
 Plugin 'vim-airline/vim-airline'
 
@@ -25,13 +24,19 @@ Plugin 'ivanov/vim-ipython'
 
 " Tmux Plugins
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" neocomplete
-let g:neocomplete#enable_at_startup = 1
+colorscheme gruvbox
+
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
@@ -81,7 +86,7 @@ set list
 " Window creation and cycling
 set splitbelow
 set splitright
-nnoremap <silent> <Tab> <C-W>w
+"nnoremap <silent> <Tab> <C-W>w
 nnoremap <silent> <S-Tab> <C-W>W
 nnoremap <silent> <C-J> <C-W><C-J>
 nnoremap <silent> <C-K> <C-W><C-K>
@@ -91,3 +96,9 @@ nnoremap <silent> <S-Up>  :resize +5<CR>
 nnoremap <silent> <S-Down> :resize -5<CR>
 nnoremap <silent> <S-Right>  :vertical resize +10<CR>
 nnoremap <silent> <S-Left> :vertical resize -10<CR>
+
+
+map 0 ^
+
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
