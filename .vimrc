@@ -24,7 +24,14 @@ Plugin 'ivanov/vim-ipython'
 
 " Tmux Plugins
 Plugin 'christoomey/vim-tmux-navigator'
+
 Plugin 'morhetz/gruvbox'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Tags
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-misc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -32,11 +39,18 @@ filetype plugin indent on    " required
 
 colorscheme gruvbox
 
+" Create tags in directory of file
+let g:easytags_dynamic_files = 2
+set tags=./tags
+
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Tagbar shortcut
+nmap <F8> :TagbarToggle<CR>
 
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
@@ -86,7 +100,7 @@ set list
 " Window creation and cycling
 set splitbelow
 set splitright
-"nnoremap <silent> <Tab> <C-W>w
+nnoremap <silent> <Tab> <C-W>w
 nnoremap <silent> <S-Tab> <C-W>W
 nnoremap <silent> <C-J> <C-W><C-J>
 nnoremap <silent> <C-K> <C-W><C-K>
@@ -96,7 +110,6 @@ nnoremap <silent> <S-Up>  :resize +5<CR>
 nnoremap <silent> <S-Down> :resize -5<CR>
 nnoremap <silent> <S-Right>  :vertical resize +10<CR>
 nnoremap <silent> <S-Left> :vertical resize -10<CR>
-
 
 map 0 ^
 
