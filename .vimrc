@@ -2,6 +2,8 @@ set nocompatible
 set encoding=utf-8
 set fileformat=unix
 set clipboard=unnamedplus
+let mapleader=" "
+let maplocalleader=" "
 
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -16,7 +18,6 @@ Plugin 'elzr/vim-json'
 Plugin 'vim-airline/vim-airline'
 
 " Python Plugins
-Plugin 'alfredodeza/pytest.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'ivanov/vim-ipython'
@@ -24,8 +25,8 @@ Plugin 'ivanov/vim-ipython'
 
 " Tmux Plugins
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'tpope/vim-dispatch'
 
-Plugin 'morhetz/gruvbox'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " Tags
@@ -33,11 +34,16 @@ Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-misc'
 
+" Colorscheme
+Plugin 'altercation/vim-colors-solarized'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme gruvbox
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Create tags in directory of file
 let g:easytags_dynamic_files = 2
@@ -62,10 +68,6 @@ syntax on
 let g:slime_target = "tmux"
 let g:slime_python_ipython = 1
 
-" Pytest
-nmap <silent><Leader>a <Esc>:Pytest file verbose<CR>
-nmap <silent><Leader>f <Esc>:Pytest function verbose<CR>
-
 " Line numbering
 set number
 set relativenumber
@@ -80,12 +82,21 @@ nnoremap <CR> :noh<CR>
 set autowrite
 set autoread
 
-syntax enable
 set cursorline
 set wildmenu
 set wildmode=list:longest,full
 
-imap fd <ESC>:w<ENTER>
+" Faster mappings
+imap fd <ESC>:w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <BS> <C-^>
+nnoremap <leader>rc :e ~/.vimrc<CR>
+
+" Better mappings
+map 0 ^
+
+" Dispatch mappings
+autocmd FileType python nnoremap <localleader>t :Dispatch pytest<CR>
 
 " Tabs and shifts, 4 spaces
 set expandtab
@@ -110,8 +121,6 @@ nnoremap <silent> <S-Up>  :resize +5<CR>
 nnoremap <silent> <S-Down> :resize -5<CR>
 nnoremap <silent> <S-Right>  :vertical resize +10<CR>
 nnoremap <silent> <S-Left> :vertical resize -10<CR>
-
-map 0 ^
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
