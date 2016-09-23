@@ -49,8 +49,8 @@ colorscheme solarized
 let g:easytags_dynamic_files = 2
 set tags=./tags
 
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
+" Always show tab line
+set showtabline=2
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -90,7 +90,14 @@ set wildmode=list:longest,full
 imap fd <ESC>:w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <BS> <C-^>
-nnoremap <leader>rc :e ~/.vimrc<CR>
+nnoremap <leader>v :e ~/.vimrc<CR>
+nnoremap <silent> <Tab> :tabnext<CR>
+nnoremap <silent> <S-Tab> :tabprevious<CR>
+nnoremap gb :ls<cr>:b<space>
+
+" TODO:
+""'.       : jump to last modification line
+""`.       : jump to exact spot in last modification line
 
 " Better mappings
 map 0 ^
@@ -111,8 +118,6 @@ set list
 " Window creation and cycling
 set splitbelow
 set splitright
-nnoremap <silent> <Tab> <C-W>w
-nnoremap <silent> <S-Tab> <C-W>W
 nnoremap <silent> <C-J> <C-W><C-J>
 nnoremap <silent> <C-K> <C-W><C-K>
 nnoremap <silent> <C-L> <C-W><C-L>
