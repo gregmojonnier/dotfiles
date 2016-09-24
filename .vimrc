@@ -20,8 +20,8 @@ Plugin 'vim-airline/vim-airline'
 " Python Plugins
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'ivanov/vim-ipython'
-"Plugin 'klen/python-mode'
+Plugin 'tweekmonster/braceless.vim'
+Plugin 'tweekmonster/local-indent.vim'
 
 " Tmux Plugins
 Plugin 'christoomey/vim-tmux-navigator'
@@ -41,10 +41,6 @@ Plugin 'altercation/vim-colors-solarized'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-syntax enable
-set background=dark
-colorscheme solarized
-
 " Create tags in directory of file
 let g:easytags_dynamic_files = 2
 set tags=./tags
@@ -62,6 +58,7 @@ nmap <F8> :TagbarToggle<CR>
 let g:tmux_navigator_save_on_switch = 2
 
 let python_highlight_all=1
+
 syntax on
 
 " Slime
@@ -87,23 +84,24 @@ set wildmenu
 set wildmode=list:longest,full
 
 " Faster mappings
-imap fd <ESC>:w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <BS> <C-^>
+nnoremap <leader>b :ls<CR>:b<space>
+nnoremap <leader>e :e<space>
 nnoremap <leader>v :e ~/.vimrc<CR>
+imap fd <ESC>:w<CR>
+nnoremap <BS> <C-^>
 nnoremap <silent> <Tab> :tabnext<CR>
 nnoremap <silent> <S-Tab> :tabprevious<CR>
-nnoremap gb :ls<cr>:b<space>
-
-" TODO:
-""'.       : jump to last modification line
-""`.       : jump to exact spot in last modification line
 
 " Better mappings
 map 0 ^
 
 " Dispatch mappings
 autocmd FileType python nnoremap <localleader>t :Dispatch pytest<CR>
+autocmd FileType python BracelessEnable +indent
+
+" Column indent guide
+autocmd FileType * LocalIndentGuide +hl +cc
 
 " Tabs and shifts, 4 spaces
 set expandtab
@@ -129,3 +127,14 @@ nnoremap <silent> <S-Left> :vertical resize -10<CR>
 
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
+
+syntax enable
+set background=dark
+colorscheme solarized
+
+" Make colorscheme look better in terminal
+if !has('gui_running')
+    let g:solarized_termcolors = &t_Co
+    let g:solarized_termtrans = 1
+    colorscheme solarized
+endif
