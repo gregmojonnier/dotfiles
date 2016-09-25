@@ -16,6 +16,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
 Plugin 'vim-airline/vim-airline'
+Plugin 'ervandew/supertab'
 
 " Python Plugins
 Plugin 'nvie/vim-flake8'
@@ -82,6 +83,7 @@ set autoread
 set cursorline
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=*.pyc,*.swp,*.o
 
 " Faster mappings
 nnoremap <leader>q :q<CR>
