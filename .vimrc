@@ -30,6 +30,12 @@ Plugin 'tpope/vim-dispatch'
 
 Plugin 'ctrlpvim/ctrlp.vim'
 
+" Snippets
+"   engine
+Plugin 'SirVer/ultisnips'
+"   actual snippets
+Plugin 'honza/vim-snippets'
+
 " Tags
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
@@ -51,6 +57,12 @@ set showtabline=2
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+" Snippets configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<CR>"
+let g:UltiSnipsJumpBackwardTrigger="<C-b>"
+let g:UltiSnipsEditSplit="vertical"
 
 " Tagbar shortcut
 nmap <F8> :TagbarToggle<CR>
