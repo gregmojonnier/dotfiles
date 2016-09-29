@@ -1,0 +1,38 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+0	/home/work/dotfiles/.vimrc	/^map 0 ^$/;"	m	language:Vim
+<BS>	/home/work/dotfiles/.vimrc	/^nnoremap <BS> <C-^>$/;"	m	language:Vim
+<C-H>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <C-H> <C-W><C-H>$/;"	m	language:Vim
+<C-J>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <C-J> <C-W><C-J>$/;"	m	language:Vim
+<C-K>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <C-K> <C-W><C-K>$/;"	m	language:Vim
+<C-L>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <C-L> <C-W><C-L>$/;"	m	language:Vim
+<CR>	/home/work/dotfiles/.vimrc	/^nnoremap <CR> :noh<CR>$/;"	m	language:Vim
+<F8>	/home/work/dotfiles/.vimrc	/^nmap <F8> :TagbarToggle<CR>$/;"	m	language:Vim
+<leader>b	/home/work/dotfiles/.vimrc	/^nnoremap <leader>b :ls<CR>:b<space>$/;"	m	language:Vim
+<leader>e	/home/work/dotfiles/.vimrc	/^nnoremap <leader>e :e<space>$/;"	m	language:Vim
+<leader>q	/home/work/dotfiles/.vimrc	/^nnoremap <leader>q :q<CR>$/;"	m	language:Vim
+<leader>v	/home/work/dotfiles/.vimrc	/^nnoremap <leader>v :e ~\/.vimrc<CR>$/;"	m	language:Vim
+<S-Down>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <S-Down> :resize -5<CR>$/;"	m	language:Vim
+<S-Left>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <S-Left> :vertical resize -10<CR>$/;"	m	language:Vim
+<S-Right>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <S-Right>  :vertical resize +10<CR>$/;"	m	language:Vim
+<S-Tab>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <S-Tab> :tabprevious<CR>$/;"	m	language:Vim
+<S-Up>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <S-Up>  :resize +5<CR>$/;"	m	language:Vim
+<Tab>	/home/work/dotfiles/.vimrc	/^nnoremap <silent> <Tab> :tabnext<CR>$/;"	m	language:Vim
+fd	/home/work/dotfiles/.vimrc	/^imap fd <ESC>:w<CR>$/;"	m	language:Vim
+g:airline#extensions#tabline#fnamemod	/home/work/dotfiles/.vimrc	/^let g:airline#extensions#tabline#fnamemod = ':t'$/;"	v	language:Vim
+g:cpp_class_scope_highlight	/home/work/dotfiles/.vimrc	/^let g:cpp_class_scope_highlight = 1$/;"	v	language:Vim
+g:cpp_experimental_template_highlight	/home/work/dotfiles/.vimrc	/^let g:cpp_experimental_template_highlight = 1$/;"	v	language:Vim
+g:ctrlp_by_filename	/home/work/dotfiles/.vimrc	/^let g:ctrlp_by_filename = 1$/;"	v	language:Vim
+g:easytags_dynamic_files	/home/work/dotfiles/.vimrc	/^let g:easytags_dynamic_files = 2$/;"	v	language:Vim
+g:javascript_plugin_jsdoc	/home/work/dotfiles/.vimrc	/^let g:javascript_plugin_jsdoc = 1$/;"	v	language:Vim
+g:slime_python_ipython	/home/work/dotfiles/.vimrc	/^let g:slime_python_ipython = 1$/;"	v	language:Vim
+g:slime_target	/home/work/dotfiles/.vimrc	/^let g:slime_target = "tmux"$/;"	v	language:Vim
+g:solarized_termcolors	/home/work/dotfiles/.vimrc	/^    let g:solarized_termcolors = &t_Co$/;"	v	language:Vim
+g:solarized_termtrans	/home/work/dotfiles/.vimrc	/^    let g:solarized_termtrans = 1$/;"	v	language:Vim
+g:tmux_navigator_save_on_switch	/home/work/dotfiles/.vimrc	/^let g:tmux_navigator_save_on_switch = 2$/;"	v	language:Vim
+g:UltiSnipsEditSplit	/home/work/dotfiles/.vimrc	/^let g:UltiSnipsEditSplit="vertical"$/;"	v	language:Vim
+g:UltiSnipsExpandTrigger	/home/work/dotfiles/.vimrc	/^let g:UltiSnipsExpandTrigger="<tab>"$/;"	v	language:Vim
+g:UltiSnipsJumpBackwardTrigger	/home/work/dotfiles/.vimrc	/^let g:UltiSnipsJumpBackwardTrigger="<C-b>"$/;"	v	language:Vim
+g:UltiSnipsJumpForwardTrigger	/home/work/dotfiles/.vimrc	/^let g:UltiSnipsJumpForwardTrigger="<CR>"$/;"	v	language:Vim
+mapleader	/home/work/dotfiles/.vimrc	/^let mapleader=" "$/;"	v	language:Vim
+maplocalleader	/home/work/dotfiles/.vimrc	/^let maplocalleader=" "$/;"	v	language:Vim
+python_highlight_all	/home/work/dotfiles/.vimrc	/^let python_highlight_all=1$/;"	v	language:Vim

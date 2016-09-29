@@ -1,7 +1,13 @@
 set nocompatible
 set encoding=utf-8
 set fileformat=unix
-set clipboard=unnamedplus
+
+if has('unix')
+    set clipboard=unnamedplus
+elseif has('win32')
+    set clipboard=unnamed
+endif
+
 let mapleader=" "
 let maplocalleader=" "
 
@@ -29,6 +35,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-dispatch'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+
+Plugin 'pangloss/vim-javascript'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'jiangmiao/auto-pairs'
 
 " Snippets
 "   engine
@@ -63,6 +73,14 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<CR>"
 let g:UltiSnipsJumpBackwardTrigger="<C-b>"
 let g:UltiSnipsEditSplit="vertical"
+
+" C++11+ syntax highlight
+let g:cpp_class_scope_highlight = 1
+let g:cpp_experimental_template_highlight = 1
+
+let g:ctrlp_by_filename = 1
+
+let g:javascript_plugin_jsdoc = 1
 
 " Tagbar shortcut
 nmap <F8> :TagbarToggle<CR>
