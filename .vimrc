@@ -125,12 +125,20 @@ nnoremap <BS> <C-^>
 nnoremap <silent> <Tab> :tabnext<CR>
 nnoremap <silent> <S-Tab> :tabprevious<CR>
 
-" Better mappings
+nnoremap <Leader>o :CtrlPMixed<CR>
+
+ Better mappings
 map 0 ^
 
 " Dispatch mappings
+"Python
 autocmd FileType python nnoremap <localleader>t :Dispatch pytest<CR>
+autocmd FileType python nnoremap <localleader>i :Start ipython<CR>
 autocmd FileType python BracelessEnable +indent
+"C++
+autocmd FileType cpp nnoremap <localleader>m :Make<CR>
+autocmd FileType cpp nnoremap <localleader>mc :Make clean<CR>
+autocmd FileType cpp nnoremap <localleader>t :Dispatch ./tests<CR>
 
 " Column indent guide
 autocmd FileType * LocalIndentGuide +hl +cc
