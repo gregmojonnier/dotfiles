@@ -17,7 +17,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'jpalardy/vim-slime'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'elzr/vim-json'
@@ -61,7 +60,7 @@ filetype plugin indent on    " required
 
 " Create tags in directory of file
 let g:easytags_dynamic_files = 2
-set tags=./tags
+set tags=./tags;/,tags;/
 
 " Always show tab line
 set showtabline=2
@@ -92,10 +91,6 @@ let g:tmux_navigator_save_on_switch = 2
 let python_highlight_all=1
 
 syntax on
-
-" Slime
-let g:slime_target = "tmux"
-let g:slime_python_ipython = 1
 
 " Line numbering
 set number
