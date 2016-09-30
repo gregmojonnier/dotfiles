@@ -35,6 +35,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-dispatch'
 
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-unimpaired'
 
 Plugin 'pangloss/vim-javascript'
 Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -126,8 +127,9 @@ nnoremap <silent> <Tab> :tabnext<CR>
 nnoremap <silent> <S-Tab> :tabprevious<CR>
 
 nnoremap <Leader>o :CtrlPMixed<CR>
+nnoremap <Leader>w :w<CR>
 
- Better mappings
+" Better mappings
 map 0 ^
 
 " Dispatch mappings
