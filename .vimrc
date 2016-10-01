@@ -56,7 +56,9 @@ Plugin 'altercation/vim-colors-solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
+
 filetype plugin indent on    " required
+syntax on
 
 " Create tags in directory of file
 let g:easytags_dynamic_files = 2
@@ -90,8 +92,6 @@ let g:tmux_navigator_save_on_switch = 2
 
 let python_highlight_all=1
 
-syntax on
-
 " Line numbering
 set number
 set relativenumber
@@ -116,7 +116,7 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>e :e<space>
 nnoremap <leader>v :e ~/.vimrc<CR>
-imap fd <ESC>:w<CR>
+inoremap jk <ESC>:w<CR>
 nnoremap <BS> <C-^>
 nnoremap <silent> <Tab> :tabnext<CR>
 nnoremap <silent> <S-Tab> :tabprevious<CR>
@@ -175,3 +175,5 @@ if !has('gui_running')
     let g:solarized_termtrans = 1
     colorscheme solarized
 endif
+
+so ~/my_functions.vim
