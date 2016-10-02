@@ -127,7 +127,7 @@ nnoremap \ <C-^>
 
 " Cycle make errors and ack search results with tab
 nnoremap <silent> <Tab> :cnext<CR>
-nnoremap <silent> <S-Tab> :cprevious<CR>
+nnoremap <silent> <BS> :cprevious<CR>
 
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>w :w<CR>
