@@ -131,6 +131,7 @@ nnoremap <silent> <BS> :cprevious<CR>
 " Better tag jumping
 nnoremap <CR> <C-]>
 nnoremap <leader><CR> <C-t>
+nnoremap <C-w><CR> <C-w><C-]>
 
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>w :w<CR>
