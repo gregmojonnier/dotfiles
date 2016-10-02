@@ -124,6 +124,8 @@ nnoremap <leader>v :e ~/.vimrc<CR>
 inoremap jk <ESC>:w<CR>
 nnoremap \ <C-^>
 
+nnoremap <Leader><Leader> :sh<CR>
+
 " Cycle make errors and ack search results with Tab and BS
 nnoremap <silent> <Tab> :cnext<CR>
 nnoremap <silent> <BS> :cprevious<CR>
@@ -193,5 +195,6 @@ if !has('gui_running')
 endif
 
 so ~/my_functions.vim
+autocmd FileType cpp nnoremap <leader>o :call EditCurrentBuffersAlternateCppFile()<CR>
 
 set history=500

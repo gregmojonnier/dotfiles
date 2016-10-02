@@ -24,5 +24,3 @@ function! EditCurrentBuffersAlternateCppFile()
         execute ':e' l:other_file
     endif
 endfunction
-
-nnoremap <leader><leader> :call EditCurrentBuffersAlternateCppFile()<CR>
