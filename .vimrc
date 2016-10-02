@@ -107,7 +107,6 @@ set incsearch
 set ignorecase
 set smartcase
 set gdefault
-nnoremap <CR> :noh<CR>
 
 set autowrite
 set autoread
@@ -125,9 +124,13 @@ nnoremap <leader>v :e ~/.vimrc<CR>
 inoremap jk <ESC>:w<CR>
 nnoremap \ <C-^>
 
-" Cycle make errors and ack search results with tab
+" Cycle make errors and ack search results with Tab and BS
 nnoremap <silent> <Tab> :cnext<CR>
 nnoremap <silent> <BS> :cprevious<CR>
+
+" Better tag jumping
+nnoremap <CR> <C-]>
+nnoremap <leader><CR> <C-t>
 
 nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>w :w<CR>
