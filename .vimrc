@@ -8,6 +8,7 @@ elseif has('win32')
     set clipboard=unnamed
 endif
 
+
 let mapleader=" "
 let maplocalleader=" "
 
@@ -30,14 +31,10 @@ Plugin 'tweekmonster/braceless.vim'
 Plugin 'tweekmonster/local-indent.vim'
 
 " Tmux Plugins
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-dispatch'
-
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-unimpaired'
+Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'pangloss/vim-javascript'
-Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'jiangmiao/auto-pairs'
 
 " Snippets
@@ -46,18 +43,26 @@ Plugin 'SirVer/ultisnips'
 "   actual snippets
 Plugin 'honza/vim-snippets'
 
-" Tags
+" Code Navigation
+Plugin 'mileszs/ack.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'xolox/vim-misc'
 
 " Colorscheme
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 
-filetype plugin indent on    " required
+if has("autocmd")
+    filetype on
+    filetype indent on
+    filetype plugin on
+endif
 syntax on
 
 " Create tags in directory of file
@@ -96,11 +101,12 @@ let python_highlight_all=1
 set number
 set relativenumber
 
-" Searching
+" Searching and replacing
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set gdefault
 nnoremap <CR> :noh<CR>
 
 set autowrite
@@ -109,7 +115,7 @@ set autoread
 set cursorline
 set wildmenu
 set wildmode=list:longest,full
-set wildignore+=*.pyc,*.swp,*.o
+set wildignore+=*.pyc,*.swp,*.o,*.obj
 
 " Faster mappings
 nnoremap <leader>q :q<CR>
@@ -117,12 +123,18 @@ nnoremap <leader>b :ls<CR>:b<space>
 nnoremap <leader>e :e<space>
 nnoremap <leader>v :e ~/.vimrc<CR>
 inoremap jk <ESC>:w<CR>
-nnoremap <BS> <C-^>
-nnoremap <silent> <Tab> :tabnext<CR>
-nnoremap <silent> <S-Tab> :tabprevious<CR>
+nnoremap \ <C-^>
 
-nnoremap <Leader>o :CtrlPMixed<CR>
+" Cycle make errors and ack search results with tab
+nnoremap <silent> <Tab> :cnext<CR>
+nnoremap <silent> <S-Tab> :cprevious<CR>
+
+nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+nnoremap <Leader>l :CtrlPMixed<CR>
+nnoremap <Leader>a :Ack 
 
 " Better mappings
 map 0 ^
@@ -177,3 +189,5 @@ if !has('gui_running')
 endif
 
 so ~/my_functions.vim
+
+set history=500
