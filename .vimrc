@@ -69,6 +69,10 @@ syntax on
 let g:easytags_dynamic_files = 2
 set tags=./tags;/,tags;/
 
+if has('win32')
+    let g:easytags_cmd = 'C:\utils\ctags58\ctags.exe'
+endif
+
 " Always show tab line
 set showtabline=2
 
