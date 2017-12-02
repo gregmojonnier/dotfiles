@@ -1,11 +1,13 @@
 set nocompatible
 set encoding=utf-8
 set fileformat=unix
+set history=500
+set cmdheight=2
 
-if has('unix')
-    set clipboard=unnamedplus
-elseif has('win32')
+if has('win32')
     set clipboard=unnamed
+else
+    set clipboard=unnamedplus
 endif
 
 
@@ -15,7 +17,7 @@ let maplocalleader=" "
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" let Vundle manage Vundle, required
+" Let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
@@ -62,8 +64,17 @@ if has("autocmd")
     filetype on
     filetype indent on
     filetype plugin on
+
+    " Dispatch mappings
+    "Python
+    autocmd FileType python nnoremap <localleader>t :Dispatch pytest<CR>
+    autocmd FileType python nnoremap <localleader>i :Start ipython<CR>
+    autocmd FileType python BracelessEnable +indent
+    "C++
+    autocmd FileType cpp nnoremap <localleader>m :Make<CR>
+    autocmd FileType cpp nnoremap <localleader>mc :Make clean<CR>
+    autocmd FileType cpp nnoremap <localleader>t :Dispatch ./tests<CR>
 endif
-syntax on
 
 " Create tags in directory of file
 let g:easytags_dynamic_files = 2
@@ -77,7 +88,9 @@ endif
 set showtabline=2
 
 " Show just the filename
+set laststatus=2
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
 
 " Snippets configuration
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -118,21 +131,39 @@ set autoread
 set cursorline
 set wildmenu
 set wildmode=list:longest,full
-set wildignore+=*.pyc,*.swp,*.o,*.obj
+set wildignore+=*.pyc,*.swp,*.o,*.obj,*.bak,tags,*/.git/**/*
+set wildignorecase
+" Opt out of scanning includes for completion
+set complete-=i
 
 " Faster mappings
 nnoremap <leader>q :q<CR>
 nnoremap <leader>b :ls<CR>:b<space>
+
 nnoremap <leader>e :e<space>
 nnoremap <leader>v :e ~/.vimrc<CR>
 inoremap jk <ESC>:w<CR>
-nnoremap \ <C-^>
+nnoremap <BS> <C-^>
+nnoremap \ <C-o>
+
+" Quickfix
+nnoremap ]q :cnext<CR>
+nnoremap ]Q :clast<CR>
+nnoremap [q :cprevious<CR>
+nnoremap [Q :cfirst<CR>
+nnoremap oe :cf<CR>
+
+" Buffers
+nnoremap ]b :bnext<CR>
+nnoremap ]B :blast<CR>
+nnoremap [b :bprevious<CR>
+nnoremap [B :bfirst<CR>
+
+" Tabs
+nnoremap <leader>tn :tabnew<CR>
 
 nnoremap <Leader><Leader> :sh<CR>
-
-" Cycle make errors and ack search results with Tab and BS
-nnoremap <silent> <Tab> :cnext<CR>
-nnoremap <silent> <BS> :cprevious<CR>
+cabbr <expr> %% expand('%:p:h')
 
 " Better tag jumping
 nnoremap <CR> <C-]>
@@ -143,24 +174,11 @@ nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
-nnoremap <Leader>l :CtrlPMixed<CR>
+nnoremap <Leader>p :CtrlPMixed<CR>
 nnoremap <Leader>a :Ack 
 
 " Better mappings
 map 0 ^
-
-" Dispatch mappings
-"Python
-autocmd FileType python nnoremap <localleader>t :Dispatch pytest<CR>
-autocmd FileType python nnoremap <localleader>i :Start ipython<CR>
-autocmd FileType python BracelessEnable +indent
-"C++
-autocmd FileType cpp nnoremap <localleader>m :Make<CR>
-autocmd FileType cpp nnoremap <localleader>mc :Make clean<CR>
-autocmd FileType cpp nnoremap <localleader>t :Dispatch ./tests<CR>
-
-" Column indent guide
-autocmd FileType * LocalIndentGuide +hl +cc
 
 " Tabs and shifts, 4 spaces
 set expandtab
@@ -187,7 +205,9 @@ nnoremap <silent> <S-Left> :vertical resize -10<CR>
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swp//
 
-syntax enable
+if !exists("g:syntax_on")
+    syntax enable
+endif
 set background=dark
 colorscheme solarized
 
@@ -198,7 +218,27 @@ if !has('gui_running')
     colorscheme solarized
 endif
 
-so ~/my_functions.vim
-autocmd FileType cpp nnoremap <leader>o :call EditCurrentBuffersAlternateCppFile()<CR>
+if &diff == 'nodiff'
+    set shell=/bin/bash\ -i
+endif
 
-set history=500
+nnoremap <leader><leader> :!sendscreen 
+
+func GitGrep(...)
+    let save = &grepprg
+    set grepprg=git\ grep\ -n\ $*
+    let s = 'grep'
+    for i in a:000
+        let s = s . ' ' . i
+    endfor
+    exe s
+    let &grepprg = save
+endfun
+command -nargs=? GitGrep call GitGrep(<f-args>)
+
+func GitGrepWord()
+    normal! "zyiw
+    call GitGrep('-w -e ', getreg('z'))
+endfun
+nnoremap <leader>g :GitGrep 
+nnoremap <leader>s :call GitGrepWord()<CR>
