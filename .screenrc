@@ -1,0 +1,12 @@
+shell bash
+startup_message off
+
+escape `e
+hardstatus alwayslastline "%{=b}%{G} %{b}%w %=%{kG}%C%A %D,%m/%d/%y"
+
+attrcolor b ".I"
+defbce "on"
+
+term screen-256color
+
+defscrollback 500

@@ -1,0 +1,16 @@
+[color]
+  ui = auto
+  branch = auto
+  status = auto
+
+[color "status"]
+  added = green
+  changed = red bold
+  untracked = magenta bold
+
+[color "branch"]
+  remote = yellow
+
+[merge]
+  # Display common-ancestor blocks in conflict hunks
+  conflictStyle = diff3
