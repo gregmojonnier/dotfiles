@@ -7,6 +7,7 @@ fi
 
 # User specific aliases and functions
 export EDITOR=vim
+export WWW_HOME="google.com"
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
 
@@ -16,6 +17,8 @@ alias d="git diff"
 alias ga="git add"
 alias gbv="git branch -v"
 alias gf="git ls-files"
+alias gg="git grep"
+alias gsno="git show --name-only"
 # git log short last 5
 gls()
 {
