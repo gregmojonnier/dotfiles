@@ -1,0 +1,3 @@
+keymap 0 LINE_BEGIN
+keymap ^? BACK
+keymap SHIFT-TAB PREV_LINK
