@@ -8,6 +8,8 @@ fi
 # User specific aliases and functions
 export EDITOR=vim
 export WWW_HOME="google.com"
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
 
@@ -24,6 +26,15 @@ gls()
 {
     default_arg="-5"
     git log --oneline "${1:-${default_arg}}"
+}
+
+alias dc="docker-compose"
+alias ut="docker-compose run --entrypoint /app/init/run-tests.sh astro"
+alias up_astro="docker-compose up -d astro"
+alias stop_astro="docker-compose stop astro astro_db"
+lint()
+{
+    docker-compose run --entrypoint /app/init/run-linting.sh astro | perl -p -e 's/^(\.{1})(.*)$/astro$2/g' > errors.err && vim errors.err
 }
 
 # screen shortcuts
